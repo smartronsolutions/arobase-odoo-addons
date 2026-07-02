@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_title
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25 03:18+0000\n"
+"PO-Revision-Date: 2025-08-25 14:19+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: project_title
+#: model:ir.model,name:project_title.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: project_title
+#: model_terms:ir.ui.view,arch_db:project_title.view_order_form_project_title
+msgid "Référence opération"
+msgstr "Operational reference"
+
+#. module: project_title
+#: model:ir.model,name:project_title.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: project_title
+#. odoo-python
+#: code:addons/project_title/models/account_move.py:0
+#: code:addons/project_title/models/sale_order.py:0
+#: model:ir.model.fields,field_description:project_title.field_account_bank_statement_line__project_title
+#: model:ir.model.fields,field_description:project_title.field_account_move__project_title
+#: model:ir.model.fields,field_description:project_title.field_account_payment__project_title
+#: model:ir.model.fields,field_description:project_title.field_sale_order__project_title
+#: model_terms:ir.ui.view,arch_db:project_title.view_account_invoice_filter_project_title
+#: model_terms:ir.ui.view,arch_db:project_title.view_sales_order_filter_project_title
+#, python-format
+msgid "Titre"
+msgstr "Title"
+
+#. module: project_title
+#. odoo-python
+#: code:addons/project_title/models/account_move.py:0
+#: code:addons/project_title/models/sale_order.py:0
+#: model:ir.model.fields,help:project_title.field_account_bank_statement_line__project_title
+#: model:ir.model.fields,help:project_title.field_account_move__project_title
+#: model:ir.model.fields,help:project_title.field_account_payment__project_title
+#: model:ir.model.fields,help:project_title.field_sale_order__project_title
+#, python-format
+msgid "Titre de vos travaux"
+msgstr "Title of your work"
+
+#. module: project_title
+#: model_terms:ir.ui.view,arch_db:project_title.report_invoice_project_title
+#: model_terms:ir.ui.view,arch_db:project_title.report_saleorder_project_title
+msgid "Titre du projet"
+msgstr "Title"
+
+#. module: project_title
+#: model_terms:ir.ui.view,arch_db:project_title.view_move_form_project_title
+msgid "Titre du projet ou référence d'opération"
+msgstr "Title or operation reference"

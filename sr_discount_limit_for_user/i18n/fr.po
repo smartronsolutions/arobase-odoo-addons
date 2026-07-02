@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sr_discount_limit_for_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-14 02:08+0000\n"
+"PO-Revision-Date: 2025-11-14 13:09+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. module: sr_discount_limit_for_user
+#: model_terms:ir.ui.view,arch_db:sr_discount_limit_for_user.view_users_form_extends_to_add_discount_limit
+msgid "<span>%</span>"
+msgstr ""
+
+#. module: sr_discount_limit_for_user
+#: model:ir.model.fields,field_description:sr_discount_limit_for_user.field_res_users__discount_limit
+msgid "Assign Discount Limit"
+msgstr "Plafond remise"
+
+#. module: sr_discount_limit_for_user
+#: model_terms:ir.ui.view,arch_db:sr_discount_limit_for_user.view_users_form_extends_to_add_discount_limit
+msgid "Discount Limit"
+msgstr "Limite de remise"
+
+#. module: sr_discount_limit_for_user
+#: model:ir.model,name:sr_discount_limit_for_user.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: sr_discount_limit_for_user
+#: model:ir.model,name:sr_discount_limit_for_user.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de commande"
+
+#. module: sr_discount_limit_for_user
+#: model:ir.model,name:sr_discount_limit_for_user.model_res_users
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: sr_discount_limit_for_user
+#. odoo-python
+#: code:addons/sr_discount_limit_for_user/models/sr_inherit_invoice.py:0
+#: code:addons/sr_discount_limit_for_user/models/sr_inherit_sale_order.py:0
+#, python-format
+msgid ""
+"You can only assign maximum %s%% Discount\n"
+"Contact your administrator for more details"
+msgstr ""
+"Vous ne pouvez attribuer qu'une remise maximale de %s%%\n"
+"Contactez votre administrateur pour plus d'informations"

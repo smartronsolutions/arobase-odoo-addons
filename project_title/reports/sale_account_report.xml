@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Modification du rapport de devis pour afficher les Titres -->
+    <template id="report_saleorder_project_title" inherit_id="sale.report_saleorder_document">
+        <!--<xpath expr="//div[@name='informations_reference']" position="after">-->
+            <!--<div t-if="doc.project_title" class="col-auto col-3 mw-100 mb-2" name="project_title">-->
+    	<xpath expr="//div[@id='informations']" position="after">
+        	<div t-if="doc.project_title" name="project_title">
+                <!--<strong>Project Title:</strong><br/>-->
+                <h6><span class="m-0" style="font-weight: bold;" t-field="doc.project_title">Titre du projet</span></h6>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Modification du rapport de facture pour afficher les TGC -->
+    <template id="report_invoice_project_title" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@id='informations']" position="after">
+            <div t-if="o.project_title">
+                <h6 style="font-weight: bold;" t-field="o.project_title">Titre du projet</h6>
+            </div>
+        </xpath>
+    </template>
+</odoo>

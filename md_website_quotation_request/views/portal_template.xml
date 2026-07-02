@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Portal Home Entry -->
+    <template id="portal_my_home_quotation_request" name="Requested Quotations" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[contains(@class,'o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon">/md_website_quotation_request/static/description/requested_quotation_icon.svg</t>
+                <t t-set="title">Requested Quotations</t>
+                <t t-set="text">Track your requested price quotes</t>
+                <t t-set="url">/my/requested_quotations</t>
+                <t t-set="placeholder_count">quotation_request_count</t>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Portal Breadcrumbs -->
+    <template id="portal_my_home_menu_quotation_request" name="Portal layout : Quotation Requests menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'requested_quotation'" class="breadcrumb-item active">
+                Requested Quotations
+            </li>
+        </xpath>
+    </template>
+
+    <!-- Requested Quotations Page -->
+    <template id="portal_my_requested_quotations" name="My Requested Quotations">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Requested Quotations</t>
+            </t>
+            
+            <t t-if="not quotations">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are currently no requested quotations for your account.
+                </div>
+            </t>
+
+            <t t-if="quotations" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Quotation #</th>
+                        <th class="text-end">Order Date</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-end">Total</th>
+                    </tr>
+                </thead>
+                <t t-foreach="quotations" t-as="quotation">
+                    <tr>
+                        <td>
+                            <a t-att-href="quotation.get_portal_url()"><t t-esc="quotation.name"/></a>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="quotation.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                            <span class='d-none d-md-inline' t-field="quotation.date_order" t-options="{'time_only': True}"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-if="quotation.state == 'draft'" class="badge rounded-pill text-bg-info">
+                                <i class="fa fa-fw fa-clock-o" role="img" aria-label="Quotation" title="Quotation"/> Quotation
+                            </span>
+                            <span t-if="quotation.state == 'sent'" class="badge rounded-pill text-bg-success">
+                                <i class="fa fa-fw fa-envelope" role="img" aria-label="Sent" title="Sent"/> Quotation Sent
+                            </span>
+                            <span t-if="quotation.state == 'sale'" class="badge rounded-pill text-bg-primary">
+                                <i class="fa fa-fw fa-check" role="img" aria-label="Confirmed" title="Confirmed"/> Sales Order
+                            </span>
+                            <span t-if="quotation.state == 'cancel'" class="badge rounded-pill text-bg-danger">
+                                <i class="fa fa-fw fa-remove" role="img" aria-label="Cancelled" title="Cancelled"/> Cancelled
+                            </span>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="quotation.amount_total"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

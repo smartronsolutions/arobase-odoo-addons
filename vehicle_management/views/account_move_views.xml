@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extension de la vue formulaire facture -->
+    <record id="view_move_form_inherit_vehicle" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.vehicle</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajouter les champs véhicule dans l'en-tête -->
+            <xpath expr="//notebook[1]" position="before">
+                <group string="Vehicle information" invisible="move_type not in ('out_invoice', 'out_refund')">
+                    <group>
+                        <field name="vehicle_id" placeholder="Enter the licence plate or model"
+                               options="{'no_create': True, 'no_create_edit': True}"
+                               domain="[('partner_id', '=', partner_id)]"/>
+                    </group>
+                    <group>
+                        <field name="vehicle_current_mileage" string="previous mileage" readonly="1" invisible="not vehicle_id"/>
+                        <field name="vehicle_mileage_value" invisible="not vehicle_id"/>
+                    </group>
+                </group>
+                
+                <!-- Champ technique caché -->
+                <field name="vehicle_mileage_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extension de la vue liste facture -->
+    <record id="view_invoice_tree_inherit_vehicle" model="ir.ui.view">
+        <field name="name">account.move.tree.inherit.vehicle</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="before">
+                <field name="vehicle_license_plate" optional="hide"/>
+                <field name="vehicle_mileage_value" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extension de la vue recherche -->
+    <record id="view_account_invoice_filter_inherit_vehicle" model="ir.ui.view">
+        <field name="name">account.move.search.inherit.vehicle</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="vehicle_license_plate" string="licence plate"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

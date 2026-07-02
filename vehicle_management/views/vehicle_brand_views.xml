@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue liste des marques -->
+    <record id="view_vehicle_brand_tree" model="ir.ui.view">
+        <field name="name">vehicle.brand.tree</field>
+        <field name="model">vehicle.brand</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle brands">
+                <field name="name"/>
+                <field name="model_count" optional="hide" string="Models"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire des marques -->
+    <record id="view_vehicle_brand_form" model="ir.ui.view">
+        <field name="name">vehicle.brand.form</field>
+        <field name="model">vehicle.brand</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle brands">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <!--<group>
+                            <field name="model_count"/>
+                        </group>-->
+                    </group>
+                    
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    
+                    <!--<notebook>
+                        <page string="Modèles" name="models">
+                            <field name="model_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue recherche des marques -->
+    <record id="view_vehicle_brand_search" model="ir.ui.view">
+        <field name="name">vehicle.brand.search</field>
+        <field name="model">vehicle.brand</field>
+        <field name="arch" type="xml">
+            <search string="Search brands">
+                <field name="name" string="Brands"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active','=',True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action des marques -->
+    <record id="action_vehicle_brand" model="ir.actions.act_window">
+        <field name="name">Brands</field>
+        <field name="res_model">vehicle.brand</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_vehicle_brand_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vehicle brand
+            </p>
+            <p>
+                Manage your customers' vehicle brands.
+            </p>
+        </field>
+    </record>
+</odoo>

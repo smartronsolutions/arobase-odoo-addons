@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Formulaire des devis avec téléphone et mobile -->
+    <record id="view_order_form_phone" model="ir.ui.view">
+        <field name="name">sale.order.form.phone</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajout dans la section client -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_phone"/>
+                <field name="partner_mobile"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vue liste des devis avec téléphone et mobile -->
+    <record id="view_quotation_tree_phone" model="ir.ui.view">
+        <field name="name">sale.order.tree.phone</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <!-- Ajout des colonnes téléphone et mobile -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_phone" optional="show"/>
+                <field name="partner_mobile" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vue liste des commandes de vente -->
+    <record id="view_order_tree_phone" model="ir.ui.view">
+        <field name="name">sale.order.tree.phone</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_phone" optional="show"/>
+                <field name="partner_mobile" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

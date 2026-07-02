@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_fiscal_position_update_prices" model="ir.ui.view">
+        <field name="name">sale.order.form.fiscal.position.update.prices</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajoute le lien de mise à jour juste après le champ fiscal_position_id -->
+            <field name="fiscal_position_id" position="after">
+                <div>
+                	<field name="need_price_update" invisible="1"/>
+                    <button name="action_update_prices" 
+                            type="object" 
+                            string=" Update Prices"
+                            icon="fa-refresh"
+                            invisible="not need_price_update or state in ['sale', 'cancel']"
+                            class="btn-link mb-1 px-0"
+                            confirm="This will update the unit price of all products based on the pricelist."
+                            help="Recompute all prices based on this pricelist"/>
+                </div>
+            </field>
+        </field>
+    </record>
+</odoo>

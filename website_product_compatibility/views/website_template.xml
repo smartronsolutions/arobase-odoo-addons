@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================= -->
+    <!-- VEHICLE SEARCH FILTER (SHOP) -->
+    <!-- ============================= -->
+    <template id="vehicle_filter_shop" inherit_id="website_sale.products">
+
+        <xpath expr="//div[hasclass('o_wsale_products_main_row')]" position="before">
+
+            <div class="card shadow-sm mb-4 p-3 o_vehicle_compat_filter vehicle-search-card">
+
+                <!-- TITLE -->
+                <h5 class="mb-2">
+                    <i class="fa fa-car me-2"/>
+                    Search by Vehicle
+                </h5>
+
+                <p class="text-muted small">
+                    Select your vehicle to find compatible products
+                </p>
+
+                <!-- FILTER ROW -->
+                <div class="row g-2">
+
+                    <!-- BRAND -->
+                    <div class="col-md-2">
+                        <label class="form-label small">Brand</label>
+                        <select id="brand_selector" class="form-select form-select-sm">
+                            <option value="">Select Brand</option>
+                        </select>
+                    </div>
+
+                    <!-- MODEL -->
+                    <div class="col-md-2">
+                        <label class="form-label small">Model</label>
+                        <select id="model_selector" class="form-select form-select-sm" disabled="1">
+                            <option value="">Select Model</option>
+                        </select>
+                    </div>
+
+                    <!-- YEAR -->
+                    <div class="col-md-2">
+                        <label class="form-label small">Year</label>
+                        <select id="year_selector" class="form-select form-select-sm" disabled="1">
+                            <option value="">Select Year</option>
+                        </select>
+                    </div>
+
+                    <!-- SERIES -->
+                    <div class="col-md-2">
+                        <label class="form-label small">Series</label>
+                        <select id="series_selector" class="form-select form-select-sm" disabled="1">
+                            <option value="">Select Series</option>
+                        </select>
+                    </div>
+
+                    <!-- VARIANT -->
+                    <div class="col-md-2">
+                        <label class="form-label small">Variant</label>
+                        <select id="variant_selector" class="form-select form-select-sm" disabled="1">
+                            <option value="">Select Variant</option>
+                        </select>
+                    </div>
+
+                    <!-- 🔥 SEARCH + MY VEHICLE -->
+                    <div class="col-md-2 d-flex align-items-end gap-1">
+
+                        <!-- SEARCH -->
+                        <button type="button"
+                                id="search_btn"
+                                class="btn btn-primary btn-sm flex-grow-1">
+                            <i class="fa fa-search me-1"/> Search
+                        </button>
+
+                        <!-- MY VEHICLE -->
+                        <button type="button"
+                                id="my_vehicle_btn"
+                                class="btn btn-outline-secondary btn-sm flex-grow-1"
+                                data-bs-toggle="modal"
+                                data-bs-target="#vehicleModal">
+                            <i class="fa fa-car me-1"/> My Vehicle
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- SELECTED PATH (MINIMALIST) -->
+                <div id="selected_path" class="d-flex align-items-center" style="display:none !important;">
+                    <small class="text-muted fw-bold">Selected:</small>
+                    <div id="path_display">
+                        <!-- Text breadcrumbs will be injected here by JS -->
+                    </div>
+                    <button type="button" id="clear_path_btn" class="btn btn-link btn-sm p-0" title="Clear Search">
+                        <i class="fa fa-times-circle"/>
+                    </button>
+                </div>
+
+            </div>
+
+        </xpath>
+
+    </template>
+
+
+    <!-- ============================= -->
+    <!-- VEHICLE MODAL (GLOBAL) -->
+    <!-- ============================= -->
+    <template id="vehicle_modal_template" inherit_id="website.layout">
+
+        <xpath expr="//body" position="inside">
+
+            <!-- VEHICLE SELECTION MODAL -->
+            <div class="modal fade" id="vehicleModal" tabindex="-1" aria-labelledby="vehicleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- MODAL HEADER -->
+                        <div class="modal-header bg-light">
+                            <h5 class="modal-title" id="vehicleModalLabel">
+                                <i class="fa fa-car me-2 text-primary"/>
+                                Select Your Vehicle
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+
+                        <!-- MODAL BODY -->
+                        <div class="modal-body">
+                            
+                            <!-- LOADING STATE -->
+                            <div id="vehicle_loading" class="text-center py-5" style="display:none;">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="text-muted mt-2">Loading your vehicles...</p>
+                            </div>
+
+                            <!-- VEHICLE LIST TABLE -->
+                            <div id="vehicle_list_container">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="col-md-4">
+                                                <i class="fa fa-cube me-2"/>Brand
+                                            </th>
+                                            <th class="col-md-4">
+                                                <i class="fa fa-cogs me-2"/>Model
+                                            </th>
+                                            <th class="col-md-4 text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vehicle_list_body">
+                                        <!-- AJAX DATA POPULATED HERE -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- EMPTY STATE -->
+                            <div id="vehicle_empty_state" class="text-center py-5" style="display:none;">
+                                <i class="fa fa-inbox fa-3x text-muted mb-3"/>
+                                <p class="text-muted">No vehicles found in your profile</p>
+                                <small class="text-muted">Add a vehicle to your profile to use this feature</small>
+                            </div>
+
+                        </div>
+
+                        <!-- MODAL FOOTER -->
+                        <div class="modal-footer bg-light">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </xpath>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Portal Home Entry -->
+    <!-- ========================= -->
+    <template id="portal_my_home_vehicles" inherit_id="portal.portal_my_home">
+    <xpath expr="//div[contains(@class,'o_portal_docs')]" position="inside">
+
+        <!-- 🔥 ACCURATE ODOO PORTAL CSS (FIXED JS ERROR FOR COUNT > 0) -->
+        
+
+        <!-- ✅ NATIVE ODOO STRUCTURE TO SATISFY JS -->
+        <div class="col-12 col-md-6 mb-3">
+
+            <a href="/my/vehicles"
+               class="o_portal_docs_entry o_vehicle_card_wrapper d-flex align-items-center justify-content-between text-decoration-none">
+
+                <!-- LEFT SECTION -->
+                <div class="d-flex align-items-center">
+                    <img src="/my_vehicles_portal/static/description/veee.svg"
+                         class="o_portal_entry_icon"
+                         alt="Icon"/>
+
+                    <div class="o_portal_entry_content">
+                        <span class="o_portal_entry_title">My Vehicles</span>
+                        <span class="o_portal_entry_description text-muted">
+                            Track your linked vehicles
+                        </span>
+                    </div>
+                </div>
+
+                <!-- RIGHT COUNT BADGE (JS WILL NOW FIND THIS) -->
+                <t t-if="vehicle_count">
+                    <span class="badge rounded-pill bg-info text-white"
+                        t-att-data-placeholder_count="vehicle_count">
+                        <t t-esc="vehicle_count"/>
+                    </span>
+                </t>
+
+            </a>
+
+        </div>
+
+    </xpath>
+</template>
+
+    <!-- ========================= -->
+    <!-- Breadcrumb -->
+    <!-- ========================= -->
+    <template id="portal_my_home_menu_vehicles" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'vehicles'" class="breadcrumb-item active">
+                My Vehicles
+            </li>
+        </xpath>
+    </template>
+
+    <!-- ========================= -->
+    <!-- Custom Soft UI Styling -->
+    <!-- ========================= -->
+    <!-- <template id="portal_my_vehicles_assets" inherit_id="portal.portal_layout">
+        <xpath expr="." position="inside">
+            
+        </xpath>
+    </template> -->
+
+    <!-- ========================= -->
+    <!-- Vehicle List -->
+    <!-- ========================= -->
+    <template id="portal_my_vehicles" name="My Vehicles">
+        <t t-call="portal.portal_layout">
+            <div class="o_portal_vehicle_container">
+                <!-- HEADER WITH ADD BUTTON -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="vehicle-header-title m-0">My Vehicles</h3>
+                    <a href="/my/vehicle/new" class="btn btn-soft-primary">
+                        <i class="fa fa-plus mr-1"/> Add Vehicle
+                    </a>
+                </div>
+
+                <t t-if="not vehicles">
+                    <div class="alert alert-info border-0 shadow-sm rounded-lg mt-4">
+                        <i class="fa fa-info-circle mr-2"/> No vehicles found in your account.
+                    </div>
+                </t>
+
+                <div t-if="vehicles" class="table-responsive">
+                    <table class="table table-soft">
+                        <thead>
+                            <tr>
+                                <th>License Plate</th>
+                                <th>Brand &amp; Model</th>
+                                <th>Year</th>
+                                <th>VIN</th>
+                                <th>Specs</th>
+                                <th>Mileage</th>
+                                <th>Owner</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="vehicles" t-as="vehicle">
+                                <tr>
+                                    <td>
+                                        <span class="badge badge-soft badge-plate" t-field="vehicle.license_plate"/>
+                                    </td>
+                                    <td>
+                                        <div class="font-weight-bold" t-field="vehicle.brand_id.name"/>
+                                        <div class="small text-muted" t-field="vehicle.model_id.name"/>
+                                    </td>
+                                    <td><span t-field="vehicle.year"/></td>
+                                    <td><code class="small text-muted" t-field="vehicle.vin"/></td>
+                                    <td>
+                                        <div class="small">
+                                            <span class="text-capitalize" t-field="vehicle.fuel_type"/> • 
+                                            <span class="text-capitalize" t-field="vehicle.transmission"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="font-weight-bold" t-field="vehicle.current_mileage"/>
+                                        <span class="small text-muted ml-1">km</span>
+                                    </td>
+                                    <td><span class="small" t-field="vehicle.partner_id.name"/></td>
+                                    <td class="text-right">
+                                        <a t-att-href="'/my/vehicle/edit/%s' % vehicle.id"
+                                           class="btn btn-sm btn-soft-primary">
+                                            Edit
+                                        </a>
+                                        <a t-att-href="'/my/vehicle/delete/%s' % vehicle.id"
+                                        class="btn btn-sm btn-soft-danger"
+                                        onclick="return confirm('Are you sure you want to delete this vehicle?');">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ========================= -->
+    <!-- Create Vehicle -->
+    <!-- ========================= -->
+    <template id="template_create_vehicle" name="Create Vehicle">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <div class="o_portal_vehicle_container mx-auto" style="max-width: 900px;">
+                    <h3 class="vehicle-header-title mb-4">Add New Vehicle</h3>
+
+                    <form action="/my/vehicle/create" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <div class="row">
+                            <!-- License Plate -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">License Plate</label>
+                                <input type="text" name="license_plate" class="form-control form-soft-control" placeholder="e.g. ABC-1234"/>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Brand</label>
+                                <select name="brand_id" id="brand_select" class="form-control form-soft-control">
+                                    <option value="">Select Brand</option>
+                                    <t t-foreach="brands" t-as="b">
+                                        <option t-att-value="b.id"><t t-esc="b.name"/></option>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <!-- Model -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Model</label>
+                                <select name="model_id" id="model_select" class="form-control form-soft-control">
+                                    <option value="">Select Model</option>
+                                    <t t-foreach="models" t-as="m">
+                                        <option t-att-value="m.id"><t t-esc="m.name"/></option>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <!-- Year -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Year</label>
+                                <input type="number" name="year" class="form-control form-soft-control" placeholder="2024"/>
+                            </div>
+
+                            <!-- VIN -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">VIN</label>
+                                <input type="text" name="vin" class="form-control form-soft-control" placeholder="Vehicle Identification Number"/>
+                            </div>
+
+                            <!-- Fuel -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Fuel Type</label>
+                                <select name="fuel_type" class="form-control form-soft-control">
+                                    <option value="gasoline">Gasoline</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                    <option value="hybrid">Hybrid</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Transmission -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Transmission</label>
+                                <select name="transmission" class="form-control form-soft-control">
+                                    <option value="manual">Manual</option>
+                                    <option value="automatic">Automatic</option>
+                                    <option value="semi_automatic">Semi-Automatic</option>
+                                </select>
+                            </div>
+
+                            <!-- Doors -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Doors</label>
+                                <select name="doors" class="form-control form-soft-control">
+                                    <option value="3">3 Doors</option>
+                                    <option value="5">5 Doors</option>
+                                </select>
+                            </div>
+
+                            <!-- Mileage -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Mileage</label>
+                                <input type="number" name="current_mileage" class="form-control form-soft-control" placeholder="0"/>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 d-flex align-items-center">
+                            <button type="submit" class="btn btn-soft-success mr-3">
+                                <i class="fa fa-check mr-1"/> Create Vehicle
+                            </button>
+                            <a href="/my/vehicles" class="btn btn-link text-muted">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- ========================= -->
+    <!-- Edit Vehicle -->
+    <!-- ========================= -->
+    <template id="template_edit_vehicle" name="Edit Vehicle">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <div class="o_portal_vehicle_container mx-auto" style="max-width: 900px;">
+                    <h3 class="vehicle-header-title mb-4">Edit Vehicle Details</h3>
+
+                    <form t-att-action="'/my/vehicle/update/%s' % vehicle.id" method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <div class="row">
+                            <!-- License Plate -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">License Plate</label>
+                                <input type="text" name="license_plate"
+                                       t-att-value="vehicle.license_plate"
+                                       class="form-control form-soft-control"/>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Brand</label>
+                                <select name="brand_id" id="brand_select" class="form-control form-soft-control">
+                                    <option value="">Select Brand</option>
+                                    <t t-foreach="brands" t-as="b">
+                                        <option t-att-value="b.id"
+                                                t-att-selected="b.id == vehicle.brand_id.id">
+                                            <t t-esc="b.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <!-- Model -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Model</label>
+                                <select name="model_id" id="model_select" class="form-control form-soft-control">
+                                    <option value="">Select Model</option>
+                                    <t t-foreach="models" t-as="m">
+                                        <option t-att-value="m.id"
+                                                t-att-selected="m.id == vehicle.model_id.id">
+                                            <t t-esc="m.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <!-- Year -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Year</label>
+                                <input type="number" name="year"
+                                       t-att-value="vehicle.year"
+                                       class="form-control form-soft-control"/>
+                            </div>
+
+                            <!-- VIN -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">VIN</label>
+                                <input type="text" name="vin"
+                                       t-att-value="vehicle.vin"
+                                       class="form-control form-soft-control"/>
+                            </div>
+
+                            <!-- Fuel -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Fuel Type</label>
+                                <select name="fuel_type" class="form-control form-soft-control">
+                                    <option value="gasoline" t-att-selected="vehicle.fuel_type == 'gasoline'">Gasoline</option>
+                                    <option value="diesel" t-att-selected="vehicle.fuel_type == 'diesel'">Diesel</option>
+                                    <option value="electric" t-att-selected="vehicle.fuel_type == 'electric'">Electric</option>
+                                    <option value="hybrid" t-att-selected="vehicle.fuel_type == 'hybrid'">Hybrid</option>
+                                    <option value="other" t-att-selected="vehicle.fuel_type == 'other'">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Transmission -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Transmission</label>
+                                <select name="transmission" class="form-control form-soft-control">
+                                    <option value="manual" t-att-selected="vehicle.transmission == 'manual'">Manual</option>
+                                    <option value="automatic" t-att-selected="vehicle.transmission == 'automatic'">Automatic</option>
+                                    <option value="semi_automatic" t-att-selected="vehicle.transmission == 'semi_automatic'">Semi-Automatic</option>
+                                </select>
+                            </div>
+
+                            <!-- Doors -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Doors</label>
+                                <select name="doors" class="form-control form-soft-control">
+                                    <option value="3" t-att-selected="vehicle.doors == '3'">3 Doors</option>
+                                    <option value="5" t-att-selected="vehicle.doors == '5'">5 Doors</option>
+                                </select>
+                            </div>
+
+                            <!-- Mileage -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-soft-label">Mileage</label>
+                                <input type="number" name="current_mileage"
+                                       t-att-value="vehicle.current_mileage"
+                                       class="form-control form-soft-control"/>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 d-flex align-items-center">
+                            <button type="submit" class="btn btn-soft-success mr-3">
+                                <i class="fa fa-save mr-1"/> Save Changes
+                            </button>
+                            <a href="/my/vehicles" class="btn btn-link text-muted">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

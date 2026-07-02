@@ -1,0 +1,104 @@
+/* Scoped WooCommerce Dashboard CSS */
+.ks_woo_dashboard .o_list_view .o_list_table tbody > tr > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button) {
+    max-width: 400px;
+}
+
+.ks_woo_dashboard .o_kanban_view.o_kanban_dashboard.o_account_kanban.o_kanban_ungrouped .o_kanban_record {
+    width: 500px;
+}
+
+.ks_woo_dashboard .c-width {
+    width: 46%;
+}
+
+.ks_woo_dashboard .o_kanban_view .oe_kanban_card .o_kanban_image + div,
+.ks_woo_dashboard .o_kanban_view .o_kanban_record .o_kanban_image + div {
+    word-break: break-all;
+}
+
+.ks_woo_dashboard .px-0 {
+    padding: 0 !important;
+}
+
+.ks_woo_dashboard .instance_dashboard {
+    width: 47%;
+    min-height: 205px;
+    background: #f0f8ff;
+}
+
+.ks_woo_dashboard .dashboard_content {
+    max-width: unset;
+    padding: 0;
+}
+
+.ks_woo_dashboard .dashboard_inner_section {
+    height: 90px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 45px;
+}
+
+.ks_woo_dashboard .dashboard_inner_section_label {
+    height: 90px;
+    align-items: center;
+    vertical-align: center;
+}
+
+.ks_woo_dashboard .dashboard_card_manager {
+    width: 100%;
+}
+
+.ks_woo_dashboard .dashboard_counts {
+    max-width: 112px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ks_woo_dashboard .woo-inner-box {
+    display: block;
+}
+
+.ks_woo_dashboard .woo-footer-box {
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.ks_woo_dashboard .dashboard_footer {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 18px;
+    padding-right: 15px !important;
+    width: 20%;
+    text-align: center;
+    padding: 5px 5px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ks_woo_dashboard .o_kanban_view.o_kanban_dashboard.o_account_kanban.o_kanban_ungrouped .woo-box-width {
+    max-width: 407px !important;
+    padding: 0;
+}
+
+.ks_woo_dashboard .woo-header-box {
+    background: #e2e2e2;
+    padding: 1px 16px;
+    margin-bottom: 30px;
+}
+
+.ks_woo_dashboard .h-unset {
+    height: unset;
+}
+
+.ks_woo_dashboard .woo-record-count {
+    max-width: 62px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    color: #444444;
+}

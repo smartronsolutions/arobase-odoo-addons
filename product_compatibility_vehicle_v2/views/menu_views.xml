@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menu dans VENTES/Configuration -->
+    <menuitem id="menu_compatibility_category_sales" 
+              name="Compatibility category" 
+              parent="sale.menu_sale_config"
+              action="action_compatibility_category" 
+              sequence="10"/>
+
+    <!-- Menu dans VENTES/Produits -->
+    <!--<menuitem id="menu_product_by_compatibility_sales" 
+              name="Produits par compatibilité" 
+              parent="sale.product_menu_catalog"
+              action="action_product_by_compatibility" 
+              sequence="10"/>-->
+
+    <!-- Menu dans INVENTAIRE/Configuration/Produits -->
+    <!--<menuitem id="menu_compatibility_category_inventory" 
+              name="Catégories de compatibilité" 
+              parent="stock.menu_product_in_config_stock"
+              action="action_compatibility_category" 
+              sequence="10"/>-->
+
+    <!-- Menu dans INVENTAIRE/Produits -->
+    <!--<menuitem id="menu_product_by_compatibility_inventory" 
+              name="Produits par compatibilité" 
+              parent="stock.menu_stock_warehouse_mgmt"
+              action="action_product_by_compatibility" 
+              sequence="10"/>-->
+
+    <!-- Menu dans VENTES/Produits -->
+    <!--<menuitem id="menu_product_compatibility_search_sales" 
+              name="🔍 Produit par compatibilité" 
+              parent="sale.product_menu_catalog"
+              action="action_product_compatibility_view" 
+              sequence="10"/>-->
+
+    <menuitem id="menu_product_compatibility_search_sales" 
+              name="Product compatibility" 
+              parent="sale.product_menu_catalog"
+              action="action_product_compatibility_view" 
+              sequence="10"/>
+
+    <!-- ======================================== -->
+    <!-- ACTION DE SYNCHRONISATION  pour modèle product_compatibility_views      -->
+    <!-- ======================================== -->
+
+    <!-- Action pour synchronisation manuelle -->
+    <record id="action_sync_compatibility_relations" model="ir.actions.server">
+        <field name="name">Synchronize compatibility relationships</field>
+        <field name="model_id" ref="model_product_compatibility_view"/>
+        <field name="state">code</field>
+        <field name="code">
+# Synchronisation de toutes les relations
+relation_count = model.sync_all_products()
+action = {
+    'type': 'ir.actions.client',
+    'tag': 'display_notification',
+    'params': {
+        'title': _('Synchronization complete'),
+        'message': _('%d relationship(s) created/updated') % relation_count,
+        'type': 'success',
+        'sticky': False,
+    }
+}
+        </field>
+    </record>
+
+    <!-- Menu de synchronisation (pour admin) -->
+    <!--<menuitem id="menu_sync_compatibility_relations" 
+              name="⚙️ Synchroniser compatibilités" 
+              parent="sale.menu_sale_config"
+              action="action_sync_compatibility_relations" 
+              sequence="30"/>-->
+
+
+    
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu principal -->
+    <menuitem id="menu_vehicle_root" 
+              name="Vehicles" 
+              sequence="50"
+              web_icon="vehicle_management,static/description/icon.png"/>
+
+    <!-- Menu Véhicules (principal) -->
+    <menuitem id="menu_vehicle_vehicles" 
+              name="Vehicles" 
+              parent="menu_vehicle_root" 
+              action="action_vehicle_vehicle" 
+              sequence="10"/>
+
+    <!-- Sous-menu Configuration -->
+    <menuitem id="menu_vehicle_config" 
+              name="Settings" 
+              parent="menu_vehicle_root" 
+              sequence="100"/>
+    
+    <!-- Menu Marques -->
+    <menuitem id="menu_vehicle_brand" 
+              name="Brands" 
+              parent="menu_vehicle_config" 
+              action="action_vehicle_brand" 
+              sequence="10"/>
+    
+    <!-- Menu Modèles -->
+    <menuitem id="menu_vehicle_model" 
+              name="Models" 
+              parent="menu_vehicle_config" 
+              action="action_vehicle_model" 
+              sequence="20"/>
+</odoo>

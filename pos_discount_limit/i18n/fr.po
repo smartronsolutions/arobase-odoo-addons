@@ -1,0 +1,63 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_discount_limit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-14 00:59+0000\n"
+"PO-Revision-Date: 2025-11-14 12:01+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.7\n"
+
+#. module: pos_discount_limit
+#. odoo-javascript
+#: code:addons/pos_discount_limit/static/src/js/payment_screen.js:0
+#, python-format
+msgid ", your discount exceeds the authorized limit of "
+msgstr ", votre remise dépasse la limite autorisée de "
+
+#. module: pos_discount_limit
+#. odoo-javascript
+#: code:addons/pos_discount_limit/static/src/js/payment_screen.js:0
+#, python-format
+msgid "Discount limit exceeded"
+msgstr "Limite de remise dépassée"
+
+#. module: pos_discount_limit
+#. odoo-python
+#: code:addons/pos_discount_limit/models/res_users.py:0
+#: model:ir.model.fields,field_description:pos_discount_limit.field_res_users__limited_discount
+#, python-format
+msgid "POS Discount Limit"
+msgstr "PDV Plafond remise"
+
+#. module: pos_discount_limit
+#: model:ir.model,name:pos_discount_limit.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Session du point de vente"
+
+#. module: pos_discount_limit
+#. odoo-python
+#: code:addons/pos_discount_limit/models/res_users.py:0
+#: model:ir.model.fields,help:pos_discount_limit.field_res_users__limited_discount
+#, python-format
+msgid "Provide discount limit to each employee"
+msgstr "Autorise une limite de remise à chaque employé"
+
+#. module: pos_discount_limit
+#: model:ir.model,name:pos_discount_limit.model_res_users
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: pos_discount_limit
+#: model_terms:ir.ui.view,arch_db:pos_discount_limit.view_users_form_discount
+msgid "POS Discount Limit"
+msgstr "Limite de remise PDV"

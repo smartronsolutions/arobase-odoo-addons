@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Extension de la vue formulaire product.document -->
+        <record id="product_document_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.document.form.inherit.email</field>
+            <field name="model">product.document</field>
+            <field name="inherit_id" ref="sale.product_document_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- Ajout du champ apres le nom -->
+                <field name="attached_on" position="after">
+                    <field name="include_in_email" 
+                           string="Includ in quote email"
+                           help="If checked, this document will be automatically attached when sending quotes by email."/>
+                </field>
+                
+            </field>
+        </record>
+
+        <!-- Extension de la vue tree product.document -->
+        <record id="product_document_tree_view_inherit" model="ir.ui.view">
+            <field name="name">product.document.tree.inherit.email</field>
+            <field name="model">product.document</field>
+            <field name="inherit_id" ref="product.product_document_list"/>
+            <field name="arch" type="xml">
+                
+                <!-- Ajout d'une colonne Email -->
+                <field name="name" position="after">
+                    <field name="include_in_email" string="Include in quote email"/>
+                </field>
+                
+            </field>
+        </record>
+
+            <!-- Extension de la vue kanban product.document -->
+        <record id="product_document_kanban_view_inherit" model="ir.ui.view">
+            <field name="name">product.document.kanban.inherit.email</field>
+            <field name="model">product.document</field>
+            <field name="inherit_id" ref="product.product_document_kanban"/>
+            <field name="arch" type="xml">
+                
+                <!-- Ajouter le champ email après le nom du document -->
+                <div name="bottom" position="inside">
+                    <div class="o_kanban_record_bottom mt-2">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <i class="fa fa-envelope-o me-1 text-muted"></i>
+                                <small class="text-muted me-3">Attach in quote to email </small>
+                            </div>
+                            <field name="include_in_email" widget="boolean_toggle" 
+                                   class="o_field_boolean_toggle"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </field>
+        </record>
+    
+    </data>
+</odoo>

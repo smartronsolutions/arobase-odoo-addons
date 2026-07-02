@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Invoice Form View -->
+    <record id="view_move_form_project_title" model="ir.ui.view">
+        <field name="name">account.move.form.project.title</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div/h1[1]" position="after">
+                <field name="project_title" placeholder="Titre du projet ou référence d'opération"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Invoice Tree View -->
+    <record id="view_invoice_tree_project_title" model="ir.ui.view">
+        <field name="name">account.move.tree.project.title</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="project_title"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Invoice Bill Tree View -->
+    <!--<record id="view_in_invoice_tree_project_title" model="ir.ui.view">
+        <field name="name">account.move.tree.bill.project.title</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_in_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="project_title"/>
+            </xpath>
+        </field>
+    </record>-->
+
+    <!-- Search view pour les factures clients -->
+    <record id="view_account_invoice_filter_project_title" model="ir.ui.view">
+        <field name="name">account.move.search.invoice.project.title</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="project_title" string="Titre"
+                       filter_domain="[('project_title', 'ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

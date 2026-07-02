@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================================== -->
+    <!-- VUES POUR COMPATIBILITY.CATEGORY        -->
+    <!-- ======================================== -->
+
+    <!-- Vue Liste des Catégories de Compatibilité -->
+    <record id="view_compatibility_category_list" model="ir.ui.view">
+        <field name="name">compatibility.category.list</field>
+        <field name="model">compatibility.category</field>
+        <field name="arch" type="xml">
+            <tree string="Compatibility category" 
+                  decoration-muted="not active"
+                  expand="1">
+                <field name="complete_name"/>
+                <field name="brand_id" optional="hide"/>
+                <field name="model_id" optional="hide"/>
+                <field name="year_id" optional="hide"/>
+                <field name="series_id" optional="hide"/>
+                <field name="variant_id" optional="hide"/>
+                <field name="product_count" string="Product" optional="hide"/>
+                <field name="active" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Formulaire des Catégories de Compatibilité -->
+    <record id="view_compatibility_category_form" model="ir.ui.view">
+        <field name="name">compatibility.category.form</field>
+        <field name="model">compatibility.category</field>
+        <field name="arch" type="xml">
+            <form string="Compatibility category">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_products" 
+                                type="object" 
+                                class="oe_stat_button" 
+                                icon="fa-cube"
+                                invisible="product_count == 0">
+                            <field name="product_count" widget="statinfo" string="Product"/>
+                        </button>
+                    </div>
+
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" 
+                            invisible="active == True"/>
+
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="Category name"/></h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="parent_id" 
+                                   placeholder="Parent category (optionnal)"
+                                   domain="[('id', '!=', id)]"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+					<separator string="Description"/>
+					<field name="description" nolabel="1" placeholder="Description of the category..."/>
+
+                    <!--<notebook>
+                        <page string="Produits compatibles" name="products">
+                            <field name="product_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="default_code" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="categ_id" optional="hide"/>
+                                    <field name="list_price" optional="show"/>
+                                    <field name="standard_price" optional="hide"/>
+                                    <field name="qty_available" optional="show"/>
+                                    <field name="uom_id" optional="hide"/>
+                                    <field name="active" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>-->
+                        
+                        <!--<page string="Catégories enfants" name="children" 
+                              invisible="not child_ids">
+                            <field name="child_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="product_count"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                        </page>-->
+                    <!--</notebook>-->
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue Kanban des Catégories de Compatibilité -->
+    <!--<record id="view_compatibility_category_kanban" model="ir.ui.view">
+        <field name="name">compatibility.category.kanban</field>
+        <field name="model">compatibility.category</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="product_count"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <t t-esc="record.name.value"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="text-muted">
+                                        <i class="fa fa-cube"/> <t t-esc="record.product_count.value"/> produits
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>-->
+
+    <!-- Vue de Recherche -->
+    <record id="view_compatibility_category_search" model="ir.ui.view">
+        <field name="name">compatibility.category.search</field>
+        <field name="model">compatibility.category</field>
+        <field name="arch" type="xml">
+            <search string="Product compatibility search">
+
+                <!-- 🔍 Searchable fields -->
+                <field name="complete_name" string="Category"/>
+                <field name="brand_id"/>
+                <field name="model_id"/>
+                <field name="year_id"/>
+                <field name="series_id"/>
+                <field name="variant_id"/>
+
+                <separator/>
+
+                <!-- ✅ Filters -->
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+
+                <separator/>
+
+                <!-- 📊 Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Brand" name="group_brand" context="{'group_by': 'brand_id'}"/>
+                    <filter string="Model" name="group_model" context="{'group_by': 'model_id'}"/>
+                    <filter string="Year" name="group_year" context="{'group_by': 'year_id'}"/>
+                    <filter string="Series" name="group_series" context="{'group_by': 'series_id'}"/>
+                    <filter string="Variant" name="group_variant" context="{'group_by': 'variant_id'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Action pour les Catégories de Compatibilité -->
+    <record id="action_compatibility_category" model="ir.actions.act_window">
+        <field name="name">Compatibility category</field>
+        <field name="res_model">compatibility.category</field>
+        <!--<field name="view_mode">tree,kanban,form</field>-->
+    	<field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_compatibility_category_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first compatibility category!
+            </p>
+            <p>
+                Compatibility categories allow you to organize your products 
+                according to their compatibility (vehicles, electronic devices, etc.).
+            </p>
+        </field>
+    </record>
+
+</odoo>

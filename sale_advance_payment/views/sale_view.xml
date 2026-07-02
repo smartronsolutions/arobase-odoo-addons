@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_order_form_change_button" model="ir.ui.view">
+        <field name="name">sale.order.form.change_button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <button name="%(action_view_account_voucher_wizard)d" string="Pay sale advanced"
+                    type="action" groups="account.group_account_invoice" invisible="state in ['done','cancel','draft'] or invoice_status in ['invoiced']"/>
+            </button>
+        	<xpath expr="//field[@name='payment_term_id']" position="after">
+            	<field name="advance_payment_count" invisible="1"/>
+            	<field name="show_residual_config" invisible="1"/>
+            	<field name="amount_resisual"
+                    	widget="monetary"
+                        invisible="not show_residual_config"
+                        style="font-weight: bold;"/>
+        	</xpath>
+            <notebook position="inside">
+                <page string="Payment advances" groups="account.group_account_invoice">
+                    <field name="account_payment_ids" nolabel="1" colspan="4" context="{'form_view_ref': 'account.view_account_payment_form','tree_view_ref': 'account.view_account_payment_tree'}"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- Vue liste des devis -->
+    <record id="view_quotation_amount_residual" model="ir.ui.view">
+        <field name="name">sale.order.amount.residual</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <!-- Ajout des colonnes téléphone et mobile -->
+            <xpath expr="//field[@name='amount_total']" position="after">
+            	<field name="show_residual_config" column_invisible="True"/>
+            	<field name="total_advance_payments" sum="Total adavance payments" optional="hide" invisible="not show_residual_config"/>
+                <field name="amount_resisual" sum="Total residual" optional="hide" invisible="not show_residual_config"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

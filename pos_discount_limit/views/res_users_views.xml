@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_discount" model="ir.ui.view">
+        <field name="name">res.users.form.discount</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences']/group[@name='messaging']" position="before">
+            	<group string="POS Discount Limit" colspan="1" col="2">
+                	<label for="limited_discount" />
+                	<div class="o_row" style="width: 100px !important;">
+                		<field name="limited_discount"/>
+						<span>%</span>
+					</div>
+            	</group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

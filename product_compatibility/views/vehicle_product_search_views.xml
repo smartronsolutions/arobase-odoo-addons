@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================================== -->
+    <!-- VUE FORMULAIRE DE RECHERCHE VÉHICULE    -->
+    <!-- ======================================== -->
+
+    <!-- Vue formulaire principale pour la recherche -->
+    <record id="view_vehicle_product_search_form" model="ir.ui.view">
+        <field name="name">vehicle.product.search.form</field>
+        <field name="model">vehicle.product.search</field>
+        <field name="arch" type="xml">
+            <form string="🔍 Search for products by vehicle">
+                <sheet>
+                    
+                    <!-- En-tête avec titre et boutons -->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_products" type="object" 
+                                class="oe_stat_button" icon="fa-cube"
+                                invisible="product_count == 0">
+                            <field name="product_count" widget="statinfo" string="Product"/>
+                        </button>
+                        <button name="action_reset_search" type="object" 
+                                class="oe_stat_button" icon="fa-refresh"
+                                string="Reset" 
+                                help="Reset all criteria"/>
+                    </div>
+
+                    <!-- Titre principal -->
+                    <div class="oe_title">
+                        <h2>
+                            <span class="fa fa-search"/> Search products by vehicle compatibility
+                        </h2>
+                        <!-- Affichage du vehicle_path -->
+                        <h4 invisible="not selected_vehicle_path">
+                            <strong>Vehicle path :</strong> 
+                            <field name="selected_vehicle_path" readonly="1" nolabel="1" class="text-info"/>
+                        </h4>
+                    </div>
+
+                    <!-- Critères de recherche en cascade -->
+                    <group string="🚗 Select criteria">
+                        <group>
+                            <field name="brand_id" 
+                                   placeholder="Select brand..."
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   readonly="0"/>
+                            
+
+                            <field name="model_id" 
+                                   placeholder="Select model..."
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   invisible="not brand_id"
+                                   readonly="0"/>
+                            
+
+                            <field name="year_id" 
+                                   placeholder="Select year..."
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   invisible="not model_id"
+                                   readonly="0"/>
+                        </group>
+                        <group>
+                            <field name="series_id" 
+                                   placeholder="Select series..."
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   invisible="not year_id"
+                                   readonly="0"/>
+                            
+                            <field name="variant_id"
+                                   placeholder="Select variant..."
+                                   options="{'no_create': True, 'no_edit': True}"
+                                   invisible="not series_id"
+                                   readonly="0"/>
+                        </group>
+                    </group>
+
+                    <!-- Zone de résultats -->
+                    <div class="alert alert-success" role="alert" 
+                         invisible="product_count == 0"
+                         style="margin: 15px 0;">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h4>
+                                    <i class="fa fa-check-circle me-2"/>
+                                    <field name="product_count" readonly="1"/> Compatible products found
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message si aucun résultat -->
+                    <div class="alert alert-warning" role="alert" 
+                         invisible="product_count > 0 or not brand_id"
+                         style="margin: 15px 0;">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h4>
+                                    <i class="fa fa-exclamation-triangle me-2"/> 
+                                    No products found
+                                </h4>
+                                <p class="mb-0">
+                                    Try changing your search criteria or selecting fewer levels.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zone de preview des produits -->
+                    <notebook invisible="product_count == 0">
+                        <page string="Product preview" name="products_preview">
+                            <field name="product_ids" nolabel="1" readonly="1">
+                                <tree create="false" edit="false" delete="false">
+                                    <field name="default_code" optional="show"/>
+                                    <field name="name"/>
+                                    <field name="categ_id" optional="hide"/>
+                                    <field name="list_price" optional="show"/>
+                                    <field name="qty_available" optional="show"/>
+                                    <field name="active" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ======================================== -->
+    <!-- ACTIONS                                  -->
+    <!-- ======================================== -->
+
+    <record id="action_vehicle_product_search" model="ir.actions.act_window">
+        <field name="name">🔍 Search by vehicle</field>
+        <field name="res_model">vehicle.product.search</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vehicle_product_search_form"/>
+        <field name="target">current</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Search for products by vehicle
+            </p>
+            <p>
+                Select gradually:<br/>
+                • Vehicle brand<br/>
+                • Model (unlocked after brand)<br/>
+                • The year (unlocks after model)<br/>
+                • The series (unlocks after year)<br/>
+                • The variant (unlocks after series)<br/><br/>
+                The results are updated automatically!
+            </p>
+        </field>
+    </record>
+
+    <!-- ======================================== -->
+    <!-- MENUS                                    -->
+    <!-- ======================================== -->
+
+    <menuitem id="menu_vehicle_product_search_sales" 
+              name="🔍 Search Products by Compatibility" 
+              parent="sale.product_menu_catalog"
+              action="action_vehicle_product_search" 
+              sequence="5"/>
+
+</odoo>

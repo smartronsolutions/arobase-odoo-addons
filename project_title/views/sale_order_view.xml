@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- SALE ORDER VIEWS -->
+    
+    <!-- Sale Order Form View -->
+    <record id="view_order_form_project_title" model="ir.ui.view">
+        <field name="name">sale.order.form.project.title</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="project_title" placeholder="Référence opération"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sale Order Tree View (quotation)-->
+    <record id="view_quotation_tree_project_title" model="ir.ui.view">
+        <field name="name">sale.order.tree.project.title</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="project_title" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sale Order Tree View (Orders) -->
+    <record id="view_order_tree_project_title" model="ir.ui.view">
+        <field name="name">sale.order.tree.orders.project.title</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="project_title" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Search view pour les devis/commandes de vente -->
+    <record id="view_sales_order_filter_project_title" model="ir.ui.view">
+        <field name="name">sale.order.search.project.title</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="project_title" string="Titre" 
+                       filter_domain="[('project_title', 'ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

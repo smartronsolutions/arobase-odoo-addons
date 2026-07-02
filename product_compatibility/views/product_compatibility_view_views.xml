@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================================== -->
+    <!-- VUES POUR PRODUCT.COMPATIBILITY.VIEW    -->
+    <!-- ======================================== -->
+
+    <!-- Vue Liste : Recherche par compatibilité (RÉSOUT LE PROBLÈME) -->
+    <record id="view_product_compatibility_view_tree" model="ir.ui.view">
+        <field name="name">product.compatibility.view.tree</field>
+        <field name="model">product.compatibility.view</field>
+        <field name="arch" type="xml">
+            <!--<tree string="Produits par compatibilité" create="false" edit="false" delete="false">-->
+            <tree string="Product compatibility">
+                <field name="product_name"/>
+                <field name="default_code"/>
+                <field name="category_name"/>
+                <field name="list_price"/>
+                <field name="qty_available"/>
+            	<button name="action_view_product" type="object" 
+                    string="Open" icon="fa-external-link" 
+                    class="btn-link"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Kanban : Alternative visuelle -->
+    <!--<record id="view_product_compatibility_view_kanban" model="ir.ui.view">
+        <field name="name">product.compatibility.view.kanban</field>
+        <field name="model">product.compatibility.view</field>
+        <field name="arch" type="xml">
+            <kanban string="Produits par compatibilité" create="false" edit="false" delete="false">
+                <field name="product_id"/>
+                <field name="product_name"/>
+                <field name="category_name"/>
+                <field name="list_price"/>
+                <field name="qty_available"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_image me-1">
+                                <img t-att-src="kanban_image('product.template', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top mb-0">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="product_name"/>
+                                        </strong>
+                                    </div>
+                                	<t t-if="record.default_code.value">[<field name="default_code"/>]</t>
+                                
+                                    <div>
+                                    	<strong><field name="list_price" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/></strong>
+                                    </div>
+                                    <div class="text-muted">
+                                        Stock: <field name="qty_available"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>-->
+
+    <!-- Vue Formulaire : Détails d'une relation -->
+    <record id="view_product_compatibility_view_form" model="ir.ui.view">
+        <field name="name">product.compatibility.view.form</field>
+        <field name="model">product.compatibility.view</field>
+        <field name="arch" type="xml">
+            <form string="Product compatibility details" create="false" edit="True">
+                <sheet>
+                    <!--<div class="oe_button_box" name="button_box">
+                        <button name="action_view_product" type="object" 
+                                class="oe_stat_button" icon="fa-cube">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Voir</span>
+                                <span class="o_stat_text">Produit</span>
+                            </div>
+                        </button>
+                        <button name="action_view_category" type="object" 
+                                class="oe_stat_button" icon="fa-tags">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Voir</span>
+                                <span class="o_stat_text">Catégorie</span>
+                            </div>
+                        </button>
+                    </div>-->
+
+                    <group>
+                        <group string="Product">
+                            <field name="product_id" readonly="1"/>
+                            <!--<field name="product_name" readonly="1"/>-->
+                            <field name="default_code" readonly="1"/>
+                            <field name="categ_id" readonly="1"/>
+                        </group>
+                        <group string="Compatibility">
+                            <field name="category_id" readonly="1"/>
+                            <field name="category_name" readonly="1"/>
+                            <!--<field name="category_complete_name" readonly="1"/>-->
+                            <field name="category_parent_id" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Commercial information">
+                            <field name="list_price" readonly="1"/>
+                            <field name="standard_price" readonly="1"/>
+                            <field name="qty_available" readonly="1"/>
+                        </group>
+                        <group string="Statut">
+                            <field name="active" readonly="1"/>
+                            <field name="display_name" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue Recherche -->
+    <record id="view_product_compatibility_view_search" model="ir.ui.view">
+        <field name="name">product.compatibility.view.search</field>
+        <field name="model">product.compatibility.view</field>
+        <field name="arch" type="xml">
+            <search string="Products by compatibility">
+                
+                <!-- RECHERCHE PAR COMPATIBILITÉ -->
+                <!--<field name="category_name" string="Compatibilité" 
+                       filter_domain="['|', ('category_name', 'ilike', self), ('category_complete_name', 'ilike', self)]"/>-->
+            
+            	<field name="category_search_normalized" 
+                       string="Compatibility" 
+                       filter_domain="[('category_search_normalized', 'ilike', self)]"/>
+            
+                <!-- CHAMPS DE RECHERCHE PRÉCIS -->
+                <field name="product_name" string="Product" 
+                       filter_domain="['|', ('product_name', 'ilike', self), ('default_code', 'ilike', self)]"/>
+            
+                <field name="categ_id" string="Product category"/>
+            	<field name="default_code" string="Defautl code"/>
+                
+                <separator/>
+                
+                <!-- FILTRES UTILES -->
+                <filter string="In stock" name="in_stock" 
+                        domain="[('qty_available', '>', 0)]"/>
+                <filter string="Active" name="active" 
+                        domain="[('active', '=', True)]"/>
+                
+                <separator/>
+                
+                <!-- GROUPEMENTS -->
+                <group expand="0" string="Group by">
+                    <!--<filter string="Catégorie de compatibilité" name="group_compatibility" 
+                            context="{'group_by': 'category_name'}"/>-->
+                    <filter string="Compatibility category" name="group_compatibility_full" 
+                            context="{'group_by': 'category_complete_name'}"/>
+                    <filter string="Product category" name="group_product_category" 
+                            context="{'group_by': 'categ_id'}"/>
+
+                </group>
+            
+                <!-- searchpanel -->
+                <searchpanel>
+                	<field name="categ_id" string="Product category" icon="fa-th-list"/>
+                </searchpanel>
+            
+            </search>
+        </field>
+    </record>
+
+    <!-- Action principale : Recherche par compatibilité -->
+    <record id="action_product_compatibility_view" model="ir.actions.act_window">
+        <field name="name">Products by compatibility</field>
+        <field name="res_model">product.compatibility.view</field>
+        <!--<field name="view_mode">tree,kanban,form</field>-->
+    	<field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_product_compatibility_view_search"/>
+        <field name="context">{
+            'search_default_active': 1,
+        	'search_default_group_compatibility_full': 1,
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Products by compatibility
+            </p>
+            <p>
+                This view allows you to view products:<br/>
+                • By compatibility category<br/>
+                • By product name<br/>
+                • By product category
+            </p>
+        </field>
+    </record>
+</odoo>

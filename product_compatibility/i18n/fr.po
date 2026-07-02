@@ -1,0 +1,500 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_compatibility
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25 23:33+0000\n"
+"PO-Revision-Date: 2025-08-26 10:34+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.constraint,message:product_compatibility.constraint_product_compatibility_view_unique_product_category
+#, python-format
+msgid "A product-category relationship can only exist once."
+msgstr "Une relation entre un produit et une catégorie ne peut exister qu'une seule fois."
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__active
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__active
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+#, python-format
+msgid "Active"
+msgstr "Actif"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__category_complete_name
+#, python-format
+msgid "Category complete name"
+msgstr "Nom complet catégorie"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__category_name
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+#, python-format
+msgid "Category name"
+msgstr "Nom Catégorie"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__category_search_normalized
+#, python-format
+msgid "Category search normalized"
+msgstr "Recherche catégories"
+
+#. module: product_compatibility
+#: model:ir.model,name:product_compatibility.model_compatibility_category
+msgid "Catégorie de compatibilité"
+msgstr ""
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__child_ids
+#, python-format
+msgid "Child category"
+msgstr "Catégorie enfant"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_form
+msgid "Commercial information"
+msgstr "Information commerciale"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_catalog_search_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_form_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_search_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_tree_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_form
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+msgid "Compatibility"
+msgstr "Compatibilité"
+
+#. module: product_compatibility
+#: model_terms:ir.actions.act_window,help:product_compatibility.action_compatibility_category
+msgid ""
+"Compatibility categories allow you to organize your products \n"
+"                according to their compatibility (vehicles, electronic devices, etc.)."
+msgstr ""
+"Les catégories de compatibilité vous permettent d'organiser vos produits \n"
+"                en fonction de leur compatibilité (véhicules, appareils électroniques, etc.)."
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,help:product_compatibility.field_product_product__compatibility_category_ids
+#: model:ir.model.fields,help:product_compatibility.field_product_template__compatibility_category_ids
+#, python-format
+msgid "Compatibility categories for this product"
+msgstr "Catégories de compatibilité pour ce produit"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: code:addons/product_compatibility/models/product_product.py:0
+#: model:ir.actions.act_window,name:product_compatibility.action_compatibility_category
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__category_id
+#: model:ir.model.fields,field_description:product_compatibility.field_product_product__compatibility_category_ids
+#: model:ir.model.fields,field_description:product_compatibility.field_product_template__compatibility_category_ids
+#: model:ir.ui.menu,name:product_compatibility.menu_compatibility_category_sales
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_form_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_search_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_list
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+#, python-format
+msgid "Compatibility category"
+msgstr "Catégorie de compatibilité"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: code:addons/product_compatibility/models/product_product.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_product__compatibility_category_count
+#: model:ir.model.fields,field_description:product_compatibility.field_product_template__compatibility_category_count
+#, python-format
+msgid "Compatibility category count"
+msgstr "Nb compatibilité"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: code:addons/product_compatibility/models/product_product.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_product__compatibility_search_text
+#: model:ir.model.fields,field_description:product_compatibility.field_product_template__compatibility_search_text
+#, python-format
+msgid "Compatibility search text"
+msgstr "Recherche compatibilité"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__product_ids
+#, python-format
+msgid "Compatible products"
+msgstr "Produits compatibles"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__complete_name
+#, python-format
+msgid "Complete name"
+msgstr "Nom complet"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__standard_price
+#, python-format
+msgid "Cost"
+msgstr "Coût"
+
+#. module: product_compatibility
+#: model_terms:ir.actions.act_window,help:product_compatibility.action_compatibility_category
+msgid "Create your first compatibility category!"
+msgstr "Créez votre première catégorie de compatibilité !"
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__create_uid
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__create_date
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__default_code
+#, python-format
+msgid "Default code"
+msgstr "Référence interne"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+msgid "Defautl code"
+msgstr "Référence interne"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__description
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+#, python-format
+msgid "Description"
+msgstr ""
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+msgid "Description of the category..."
+msgstr "Description catégorie"
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__display_name
+msgid "Display Name"
+msgstr "Affichage"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__display_name
+#, python-format
+msgid "Display name"
+msgstr "Affichage"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,help:product_compatibility.field_compatibility_category__sequence
+#, python-format
+msgid "Display order"
+msgstr "Ordre d'affichage"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#, python-format
+msgid "Error! You cannot create recursive categories."
+msgstr "Erreur ! Vous ne pouvez pas créer de catégories récursives."
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+msgid "Group by"
+msgstr "Grouper par"
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__id
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__id
+msgid "ID"
+msgstr ""
+
+#. module: product_compatibility
+#: model:ir.model.fields,help:product_compatibility.field_product_compatibility_view__active
+msgid "If unchecked, it will allow you to hide the product without removing it."
+msgstr ""
+"Si cette option n'est pas cochée, cela vous permettra de masquer le produit sans le "
+"supprimer."
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+msgid "In stock"
+msgstr "En stock"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "Inactive"
+msgstr "Inactif"
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__write_uid
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__write_date
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__name
+#, python-format
+msgid "Name"
+msgstr "Nom"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_tree
+msgid "Open"
+msgstr "Ouvrir"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "Parent Category"
+msgstr "Catégorie parent"
+
+#. module: product_compatibility
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__parent_path
+msgid "Parent Path"
+msgstr "Chemin"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__parent_id
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__category_parent_id
+#, python-format
+msgid "Parent category"
+msgstr "Catégorie parent"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+msgid "Parent category (optionnal)"
+msgstr "Catégorie parent (optionnel)"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__list_price
+#, python-format
+msgid "Price"
+msgstr "Prix"
+
+#. module: product_compatibility
+#: model:ir.model.fields,help:product_compatibility.field_product_compatibility_view__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "Prix auquel le produit est vendu aux clients."
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model,name:product_compatibility.model_product_template
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__product_id
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_form
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_list
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_form
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+#, python-format
+msgid "Product"
+msgstr "Produit"
+
+#. module: product_compatibility
+#: model:ir.model,name:product_compatibility.model_product_product
+msgid "Product Variant"
+msgstr "Variante de produit"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__categ_id
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+#, python-format
+msgid "Product category"
+msgstr "Catégorie de produits"
+
+#. module: product_compatibility
+#: model:ir.ui.menu,name:product_compatibility.menu_product_compatibility_search_sales
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_tree
+msgid "Product compatibility"
+msgstr "Compatibilité produits"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_form
+msgid "Product compatibility details"
+msgstr "Détail compatibilité"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "Product compatibility search"
+msgstr "Recherche compatibilité produits"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__product_count
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_form_view_compatibility
+#, python-format
+msgid "Product count"
+msgstr "Produits"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__product_name
+#, python-format
+msgid "Product name"
+msgstr "Nom produit"
+
+#. module: product_compatibility
+#: model:ir.actions.act_window,name:product_compatibility.action_product_compatibility_view
+#: model_terms:ir.actions.act_window,help:product_compatibility.action_product_compatibility_view
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_search
+msgid "Products by compatibility"
+msgstr "Produits par compatibilité"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__qty_available
+#, python-format
+msgid "Qty available"
+msgstr "Qté disponible"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "Root Category"
+msgstr "Catégorie racine"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/product_compatibility_view.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_product_compatibility_view__search_text
+#, python-format
+msgid "Search text"
+msgstr "Recherche"
+
+#. module: product_compatibility
+#. odoo-python
+#: code:addons/product_compatibility/models/compatibility_category.py:0
+#: model:ir.model.fields,field_description:product_compatibility.field_compatibility_category__sequence
+#, python-format
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_product_compatibility_view_form
+msgid "Statut"
+msgstr ""
+
+#. module: product_compatibility
+#: model:ir.actions.server,name:product_compatibility.action_sync_compatibility_relations
+msgid "Synchronize compatibility relationships"
+msgstr "Synchroniser les relations de compatibilité"
+
+#. module: product_compatibility
+#: model_terms:ir.actions.act_window,help:product_compatibility.action_product_compatibility_view
+msgid ""
+"This view allows you to view products:<br>\n"
+"                • By compatibility category<br>\n"
+"                • By product name<br>\n"
+"                • By product category"
+msgstr ""
+"Cette vue vous permet d'afficher les produits :<br>\n"
+"                • Par catégorie de compatibilité<br>\n"
+"                • Par nom de produit<br>\n"
+"                • Par catégorie de produit"
+
+#. module: product_compatibility
+#: model:ir.model.fields,help:product_compatibility.field_product_compatibility_view__standard_price
+msgid ""
+"Value of the product (automatically computed in AVCO).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory "
+"adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"Valeur du produit (calculée automatiquement dans AVCO).\n"
+"        Utilisée pour évaluer le produit lorsque le coût d'achat n'est pas connu (par "
+"exemple, ajustement des stocks).\n"
+"        Utilisée pour calculer les marges sur les commandes de vente."
+
+#. module: product_compatibility
+#: model:ir.model,name:product_compatibility.model_product_compatibility_view
+msgid "Vue produit-compatibilité (une relation par enregistrement)"
+msgstr ""
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_catalog_search_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_search_view_compatibility
+msgid "With compatibility"
+msgstr "Avec compatibilité"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.view_compatibility_category_search
+msgid "With products"
+msgstr "Avec produits"
+
+#. module: product_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_catalog_search_view_compatibility
+#: model_terms:ir.ui.view,arch_db:product_compatibility.product_template_search_view_compatibility
+msgid "Without compatibility"
+msgstr "Sans compatibilité"

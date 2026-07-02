@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Formulaire des factures avec téléphone et mobile -->
+    <record id="view_move_form_phone" model="ir.ui.view">
+        <field name="name">account.move.form.phone</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajout dans la section client -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="partner_phone"/>
+                <field name="partner_mobile"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Vue liste des factures avec téléphone et mobile -->
+    <record id="view_invoice_tree_phone" model="ir.ui.view">
+        <field name="name">account.move.tree.phone</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <!-- Ajout des colonnes téléphone et mobile -->
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="partner_phone" optional="hide"/>
+                <field name="partner_mobile" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

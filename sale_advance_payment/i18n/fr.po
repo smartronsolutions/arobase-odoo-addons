@@ -1,0 +1,263 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_advance_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-24 07:25+0000\n"
+"PO-Revision-Date: 2025-07-24 18:30+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.report_saleorder_document_comments
+msgid ""
+"<br/>\n"
+"                <strong>\n"
+"                    <i class=\"fa fa-credit-card\"/> Advance payment\n"
+"                </strong>"
+msgstr ""
+
+#. module: sale_advance_payment
+#. odoo-python
+#: code:addons/sale_advance_payment/wizard/sale_advance_payment_wzd.py:0
+#: model:ir.actions.act_window,name:sale_advance_payment.action_view_account_voucher_wizard
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
+#, python-format
+msgid "Advance Payment"
+msgstr "Paiements reçus"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_sale_order__advance_payment_count
+msgid "Advance Payments Count"
+msgstr "Nb de paiement ant."
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.res_config_settings_view_form_advance_payment
+msgid ""
+"Affiche en interne le montant résiduel dans les formulaires et listes des "
+"commandes de vente"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.res_config_settings_view_form_advance_payment
+msgid "Affiche la liste des paiements anticipés dans les rapports de devis"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_res_config_settings__show_residual_amount
+msgid "Afficher le montant residuel"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_res_config_settings__show_advance_payments_in_reports
+msgid "Afficher les paiements anticipes dans les rapports"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__amount_advance
+msgid "Amount advanced"
+msgstr "Montant de l'avance"
+
+#. module: sale_advance_payment
+#. odoo-python
+#: code:addons/sale_advance_payment/wizard/sale_advance_payment_wzd.py:0
+#, python-format
+msgid "Amount of advance is greater than residual amount on sale"
+msgstr ""
+"Le montant du paiement anticipé est supérieur au montant résiduel à régler "
+"de la commande"
+
+#. module: sale_advance_payment
+#. odoo-python
+#: code:addons/sale_advance_payment/wizard/sale_advance_payment_wzd.py:0
+#, python-format
+msgid "Amount of advance must be positive."
+msgstr "Le montant du paiement anticipé doit être positif."
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__amount_total
+msgid "Amount total"
+msgstr "Montant total"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,help:sale_advance_payment.field_sale_order__amount_resisual
+msgid ""
+"Ce Montant affiche uniquement la somme restante du bon de commande en "
+"prenant compte des paiements anticipés saisis à travers de ce bon de "
+"commande."
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model,name:sale_advance_payment.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de configuration"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__create_uid
+msgid "Created by"
+msgstr "Crée par"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__create_date
+msgid "Created on"
+msgstr "Créer le"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__currency_amount
+msgid "Curr. amount"
+msgstr "Montant actuel"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__date
+msgid "Date"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__exchange_rate
+msgid "Exchange rate"
+msgstr "Taux de change"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__journal_id
+msgid "Journal"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière Mise à jour le"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
+msgid "Make advance payment"
+msgstr "Créer avance de paiement"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,help:sale_advance_payment.field_sale_order__total_advance_payments
+msgid ""
+"Montant total de tous les paiements anticipés validés pour cette commande"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_account_voucher_wizard
+msgid "Operation"
+msgstr "Opération"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.res_config_settings_view_form_advance_payment
+msgid "Paiement anticipé"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_sale_order__account_payment_ids
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_order_form_change_button
+msgid "Pay sale advanced"
+msgstr "Créer un paiement anticipé"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__payment_method_line_id
+msgid "Payment Method"
+msgstr "Mode de paiement"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_order_form_change_button
+msgid "Payment advances"
+msgstr "Paiement anticipé"
+
+#. module: sale_advance_payment
+#: model:ir.model,name:sale_advance_payment.model_account_payment
+msgid "Payments"
+msgstr "Paiements"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_voucher_wizard__payment_ref
+msgid "Ref."
+msgstr "Ref."
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_sale_order__amount_resisual
+msgid "Residual amount"
+msgstr "Montant résiduel"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_account_payment__sale_id
+msgid "Sale"
+msgstr "Devis"
+
+#. module: sale_advance_payment
+#: model:ir.model,name:sale_advance_payment.model_sale_order
+msgid "Sales Order"
+msgstr "Commande client"
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_sale_order__show_residual_config
+msgid "Show Residual Config"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,help:sale_advance_payment.field_res_config_settings__show_residual_amount
+msgid ""
+"Si coché, affiche en interne le montant résiduel du devis en prenant compte "
+"des paiements anticipés"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,help:sale_advance_payment.field_res_config_settings__show_advance_payments_in_reports
+msgid ""
+"Si coché, affiche la liste des paiements anticipés dans les rapports des "
+"commandes clients"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model:ir.model.fields,field_description:sale_advance_payment.field_sale_order__total_advance_payments
+msgid "Total P. Anticipés"
+msgstr ""
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_quotation_amount_residual
+msgid "Total adavance payments"
+msgstr "Total paiement anticipé"
+
+#. module: sale_advance_payment
+#: model_terms:ir.ui.view,arch_db:sale_advance_payment.view_quotation_amount_residual
+msgid "Total residual"
+msgstr "Total résiduel"
+
+#. module: sale_advance_payment
+#: model:ir.model,name:sale_advance_payment.model_account_voucher_wizard
+msgid "account.voucher.wizard"
+msgstr ""

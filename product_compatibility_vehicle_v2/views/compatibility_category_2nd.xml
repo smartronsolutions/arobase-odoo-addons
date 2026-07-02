@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Compatibility Category Form Extension -->
+    <record id="view_compatibility_category_form_vehicle_level" model="ir.ui.view">
+        <field name="name">compatibility.category.form.vehicle.level</field>
+        <field name="model">compatibility.category</field>
+        <field name="inherit_id" ref="product_compatibility_vehicle_v2.view_compatibility_category_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Vehicle Information" name="vehicle_info">
+                        <group>
+                            <group string="Hierarchy">
+                                <field name="brand_id" placeholder="Select brand"/>
+                                <field name="model_id" options="{'no_open': True}" domain="[('brand_id','=',brand_id)]" placeholder="Select model"/>
+                                <field name="year_id" options="{'no_open': True}" domain="[('model_id','=',model_id)]" placeholder="Select year"/>
+                                <field name="series_id" options="{'no_open': True}" domain="[('year_id','=',year_id)]" placeholder="Select series"/>
+                                <field name="variant_id" options="{'no_open': True}" domain="[('series_id','=',series_id)]" placeholder="Select variant"/>
+                            </group>
+                            <group string="Complete Name">
+                                <field name="vehicle_path" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        	<xpath expr="//field[@name='parent_id']" position="replace"></xpath>
+        
+        	<xpath expr="//field[@name='name']" position="replace">
+            	<h1><field name="name" placeholder="Category name will be auto-generated from vehicle selection"/></h1>
+        	</xpath>
+        
+        </field>
+    </record>
+
+    <!-- Vehicle Brands -->
+    <record id="action_vehicle_brand" model="ir.actions.act_window">
+        <field name="name">Brands</field>
+        <field name="res_model">vehicle.brands</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_vehicle_brand"
+              name="Brands"
+              parent="sale.menu_sale_config"
+              action="action_vehicle_brand"
+              sequence="50"/>
+
+    <!-- Vehicle Models -->
+    <record id="action_vehicle_model" model="ir.actions.act_window">
+        <field name="name">Models</field>
+        <field name="res_model">vehicle.models</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_vehicle_model"
+              name="Models"
+              parent="sale.menu_sale_config"
+              action="action_vehicle_model"
+              sequence="51"/>
+
+    <!-- Vehicle Years -->
+    <record id="action_vehicle_year" model="ir.actions.act_window">
+        <field name="name">Years</field>
+        <field name="res_model">vehicle.years</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_vehicle_year"
+              name="Years"
+              parent="sale.menu_sale_config"
+              action="action_vehicle_year"
+              sequence="52"/>
+
+    <!-- Vehicle Serieses -->
+    <record id="action_vehicle_series" model="ir.actions.act_window">
+        <field name="name">Series</field>
+        <field name="res_model">vehicle.serieses</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_vehicle_series"
+              name="Series"
+              parent="sale.menu_sale_config"
+              action="action_vehicle_series"
+              sequence="53"/>
+
+    <record id="action_vehicle_variant" model="ir.actions.act_window">
+        <field name="name">Variants</field>
+        <field name="res_model">vehicle.variants</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_vehicle_variant"
+            name="Variants"
+            parent="sale.menu_sale_config"
+            action="action_vehicle_variant"
+            sequence="54"/>
+
+</odoo>

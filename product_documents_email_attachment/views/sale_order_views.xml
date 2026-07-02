@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Extension de la vue formulaire mail.compose.message -->
+        <record id="mail_compose_message_form_view_inherit" model="ir.ui.view">
+            <field name="name">mail.compose.message.form.inherit.product.docs</field>
+            <field name="model">mail.compose.message</field>
+            <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- Ajouter les boutons apres le champ attachment_ids -->
+                <field name="attachment_ids" position="after">
+                    <!--<div class="row" invisible="model != 'sale.order'">
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <strong>📄 Documents produits :</strong>
+                                        <button name="action_add_product_documents" 
+                                                string="+ Joindre doc produits" 
+                                                type="object" 
+                                                class="btn btn-primary btn-sm ms-2"
+                                                help="Selectionner et ajouter les documents produits"/>
+                                    </div>
+                                    <small class="text-muted">
+                                        Cliquez pour choisir les documents a joindre
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="row mt-3" invisible="model != 'sale.order'">
+                        <div class="col-12">
+							<div class="d-flex gap-2">
+                            	<button name="action_add_product_documents" 
+                                        string="Attach product documents" 
+                                        type="object" 
+                                        class="btn btn-primary btn-sm"
+                                        icon="fa-plus"
+                                        help="Automatically add checked output documents">
+                                </button>
+
+                            	<button name="action_add_optional_product_documents" 
+                                   		string="Attach optional product documents" 
+                                    	type="object" 
+                                    	class="btn btn-secondary btn-sm"
+                                    	icon="fa-plus"
+                                    	help="Automatically add checked optional product documents">
+                            	</button>  
+                        	</div>
+                        </div>
+                    </div>
+                </field>
+                
+            </field>
+        </record>
+    
+    
+    </data>
+</odoo>

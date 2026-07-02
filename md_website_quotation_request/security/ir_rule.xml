@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- This rule specifically allows portal users to see their own Requested Quotations even in Draft state -->
+        <record id="sale_order_quotation_request_portal_rule" model="ir.rule">
+            <field name="name">Portal: Read own Requested Quotations (All States Force)</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[
+                ('message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),
+                ('quotation_request', '=', True)
+            ]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

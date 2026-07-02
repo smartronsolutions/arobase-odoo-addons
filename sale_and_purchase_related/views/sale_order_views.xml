@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Sale Order Form View - Add Purchase Orders Fields -->
+    <record id="view_order_form_inherit_purchase_link" model="ir.ui.view">
+        <field name="name">sale.order.form.purchase.link</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add Purchase Status in title area, same line as name -->
+            <div class="oe_title" position="replace">
+                <div class="oe_title d-flex justify-content-between align-items-center">
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                    <div class="d-flex align-items-center">
+                        <field name="purchase_status" 
+                               widget="badge" 
+                               decoration-secondary="purchase_status == 'no_purchase'"
+                               decoration-warning="purchase_status == 'purchase_pending'"
+                               decoration-success="purchase_status == 'purchase_validated'"
+                               decoration-danger="purchase_status == 'purchase_cancelled'"
+                               readonly="1"
+                               invisible="state not in ('sale', 'done')"/>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Add Purchase Orders field in Other Information tab -->
+            <group name="sale_info" position="after">
+                <group name="purchase_info" string="Purchase Information" 
+                       invisible="not purchase_order_ids">
+                    <field name="purchase_order_ids" widget="many2many_tags" readonly="1"/>
+                </group>
+            </group>
+
+        
+            <!-- Ajouter l'icône dans la vue tree des order_line -->
+            <xpath expr="//field[@name='order_line']//tree//field[@name='product_template_id']" position="after">
+                <field name="replenishment_icon" 
+                       widget="html"
+                       invisible="product_type != 'product'"
+                       readonly="1"
+                       nolabel="1"/>
+            </xpath>
+            
+            <!-- Ajouter les champs nécessaires (invisibles) -->
+            <xpath expr="//field[@name='order_line']//tree" position="inside">
+                <field name="product_type" column_invisible="True"/>
+            </xpath>
+        
+        
+        </field>
+    </record>
+    
+    <!-- Sale Order Tree View - Add Purchase Order Count -->
+    <record id="view_order_tree_inherit_purchase_link" model="ir.ui.view">
+        <field name="name">sale.order.tree.purchase.link</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="purchase_order_count" string="PO Count" optional="hide"/>
+            	<field name="purchase_status"
+       				decoration-warning="purchase_status == 'purchase_pending'"
+                    decoration-success="purchase_status == 'purchase_validated'"
+                    decoration-danger="purchase_status == 'purchase_cancelled'"
+       				widget="badge"
+       				optional="hide"
+                    invisible="state not in ('sale', 'done')"/>
+            </field>
+        </field>
+    </record>
+ 
+
+    <!-- Sale Order Search View - Add Purchase Status filter and groupby -->
+    <record id="view_sales_order_filter_inherit_purchase" model="ir.ui.view">
+        <field name="name">sale.order.search.purchase.status</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add filters for purchase status -->
+            <filter name="my_sale_orders_filter" position="after">
+                <separator/>
+                <filter name="no_purchase" string="No Purchase Required" domain="[('purchase_status', '=', 'no_purchase')]"/>
+                <filter name="purchase_pending" string="Purchase Pending" domain="[('purchase_status', '=', 'purchase_pending')]"/>
+                <filter name="purchase_validated" string="Purchase Validated" domain="[('purchase_status', '=', 'purchase_validated')]"/>
+                <filter name="purchase_cancelled" string="Purchase Cancelled" domain="[('purchase_status', '=', 'purchase_cancelled')]"/>
+            </filter>
+            
+            <!-- Add groupby for purchase status -->
+            <filter name="salesperson" position="after">
+                <filter name="group_by_purchase_status" string="Purchase Status" 
+                        context="{'group_by': 'purchase_status'}"/>
+            </filter>
+            
+        </field>
+    </record>
+
+
+</odoo>

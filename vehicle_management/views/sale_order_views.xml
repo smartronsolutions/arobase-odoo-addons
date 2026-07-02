@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extension de la vue formulaire bon de commande -->
+    <record id="view_order_form_inherit_vehicle" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.vehicle</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[1]" position="before">
+                <group string="Vehicle information">
+                    <field name="vehicle_id" 
+                           options="{'no_create': True, 'no_create_edit': True}"
+                           placeholder="Enter license plate or model"/>
+                	<field name="vehicle_compatibility_text" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extension de la vue liste bon de commande -->
+    <record id="view_quotation_tree_inherit_vehicle" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit.vehicle</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="vehicle_license_plate" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extension de la vue recherche bon de commande -->
+    <record id="view_sales_order_filter_inherit_vehicle" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.vehicle</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="vehicle_license_plate" string="Licence plate"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

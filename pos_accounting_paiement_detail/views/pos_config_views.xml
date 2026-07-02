@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_pos_config_form_detailed_accounting" model="ir.ui.view">
+            <field name="name">pos.config.form.detailed.accounting</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Ajouter juste avant la section groupe système -->
+                <xpath expr="//div[@groups='base.group_system']" position="before">
+                    <setting string="Écritures comptables détaillées" 
+                             help="Génère une écriture comptable pour chaque paiement au lieu de les consolider par méthode de paiement">
+                        <field name="detailed_accounting_entries"/>
+                    </setting>
+                    <setting string="Lettrage automatique" 
+                             help="Lettre automatiquement les écritures">
+                    	<field name="auto_reconcile_receivables" invisible="not detailed_accounting_entries"/>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

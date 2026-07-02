@@ -1,0 +1,206 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_and_purchase_related
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-10 02:34+0000\n"
+"PO-Revision-Date: 2025-09-10 13:35+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order_line.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_sale_order_line__has_replenishment
+#, python-format
+msgid "Has Replenishment"
+msgstr "A un réapprovisionnement"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order_line.py:0
+#: model:ir.model.fields,help:sale_and_purchase_related.field_sale_order_line__has_replenishment
+#, python-format
+msgid "Indicates if this product has replenishment configuration"
+msgstr "Indique si cet article dispose d'une configuration de réapprovisionnement."
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#: model:ir.model.fields,help:sale_and_purchase_related.field_purchase_order__sale_order_names
+#, python-format
+msgid "Names of related sale orders"
+msgstr "Noms des commandes liées"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale_and_purchase_related.selection__sale_order__purchase_status__no_purchase
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_sales_order_filter_inherit_purchase
+#, python-format
+msgid "No Purchase"
+msgstr "Aucun achat"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#, python-format
+msgid "No linked purchase orders found."
+msgstr "Aucun achat trouvée."
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#, python-format
+msgid "No linked sale orders found."
+msgstr "Aucune commande trouvée."
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#: model:ir.model.fields,help:sale_and_purchase_related.field_purchase_order__sale_order_count
+#, python-format
+msgid "Number of sale orders linked to this purchase order"
+msgstr "Nombre de commandes liées à cet achat"
+
+#. module: sale_and_purchase_related
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_order_tree_inherit_purchase_link
+msgid "PO Count"
+msgstr "Nbr Achat"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale_and_purchase_related.selection__sale_order__purchase_status__purchase_cancelled
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_sales_order_filter_inherit_purchase
+#, python-format
+msgid "Purchase Cancelled"
+msgstr "Achat annulée"
+
+#. module: sale_and_purchase_related
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_order_form_inherit_purchase_link
+msgid "Purchase Information"
+msgstr "Achat information"
+
+#. module: sale_and_purchase_related
+#: model:ir.model,name:sale_and_purchase_related.model_purchase_order
+msgid "Purchase Order"
+msgstr "Bon de commande fournisseur"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_sale_order__purchase_order_count
+#, python-format
+msgid "Purchase Order Count"
+msgstr "Nombre de bons de commande générés"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale_and_purchase_related.selection__sale_order__purchase_status__purchase_pending
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_sales_order_filter_inherit_purchase
+#, python-format
+msgid "Purchase Pending"
+msgstr "Achat en cours"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_sale_order__purchase_status
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_sales_order_filter_inherit_purchase
+#, python-format
+msgid "Purchase Status"
+msgstr "Statuts achat"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields.selection,name:sale_and_purchase_related.selection__sale_order__purchase_status__purchase_validated
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_sales_order_filter_inherit_purchase
+#, python-format
+msgid "Purchase Validated"
+msgstr "Achat validé"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields,help:sale_and_purchase_related.field_sale_order__purchase_order_ids
+#, python-format
+msgid "Purchase orders related to this sales order via stock moves"
+msgstr "Achats liés à cette commande via les mouvements de stock"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#, python-format
+msgid "Related Purchase Order"
+msgstr "Achat associé"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_sale_order__purchase_order_ids
+#, python-format
+msgid "Related Purchase Orders"
+msgstr "Achats associés"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#, python-format
+msgid "Related Sale Order"
+msgstr "Commande associée"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_purchase_order__sale_order_names
+#, python-format
+msgid "Related Sale Orders"
+msgstr "Commandes associées"
+
+#. module: sale_and_purchase_related
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_sale_order_line__replenishment_icon
+msgid "Replenishment Icon"
+msgstr "Icône de réapprovisionnement"
+
+#. module: sale_and_purchase_related
+#: model_terms:ir.ui.view,arch_db:sale_and_purchase_related.view_purchase_order_tree_inherit_sale_link
+msgid "SO Count"
+msgstr "Nbr commande"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/purchase_order.py:0
+#: model:ir.model.fields,field_description:sale_and_purchase_related.field_purchase_order__sale_order_count
+#, python-format
+msgid "Sale Orders Count"
+msgstr "Nombre de ventes à la source"
+
+#. module: sale_and_purchase_related
+#: model:ir.model,name:sale_and_purchase_related.model_sale_order
+msgid "Sales Order"
+msgstr "Commande client"
+
+#. module: sale_and_purchase_related
+#: model:ir.model,name:sale_and_purchase_related.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de commande"
+
+#. module: sale_and_purchase_related
+#. odoo-python
+#: code:addons/sale_and_purchase_related/models/sale_order.py:0
+#: model:ir.model.fields,help:sale_and_purchase_related.field_sale_order__purchase_status
+#, python-format
+msgid "Status of related purchase orders"
+msgstr "Statut des achats associés"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        EpayNC redirect form.
+        ir.qweb._render(view_id, rendering_values) expands rendering_values as TOP-LEVEL
+        QWeb variables — NOT as a dict named "rendering_values".
+        We receive:
+          - api_url       : gateway POST URL
+          - form_fields   : dict of all hidden POST fields (vads_* + signature)
+    -->
+    <template id="redirect_form" name="EpayNC: Redirect Form">
+        <form t-att-action="api_url" method="post" id="o_payment_redirect_form">
+            <t t-foreach="form_fields.items()" t-as="item">
+                <input type="hidden" t-att-name="item[0]" t-att-value="str(item[1])"/>
+            </t>
+        </form>
+        <script>
+            (function () {
+                var form = document.getElementById('o_payment_redirect_form');
+                if (form) { form.submit(); }
+            })();
+        </script>
+    </template>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Website Quotation" invisible="not quotation_request">
+                    <group>
+                        <field name="quotation_request" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_quotation" model="ir.actions.act_window">
+        <field name="name">Requested Quotations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('quotation_request','=',True)]</field>
+    </record>
+    <menuitem id="menu_request_quatation" name="Requested Quotations" parent="website_sale.menu_orders" action="action_quotation" sequence="5" />
+</odoo>

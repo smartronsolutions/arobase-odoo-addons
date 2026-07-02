@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="report_saleorder_document_custom" inherit_id="sale.report_saleorder_document">
+            <!-- Modification de l'en-tête des colonnes pour les devis -->
+            <xpath expr="//th[@name='th_description']" position="before">
+            <th name="th_ref" class="text-start">Code</th>
+            	<th name="th_stock" class="text-center">En stock</th>
+            </xpath>
+
+            <!-- Modification du contenu des lignes pour les devis -->
+            <xpath expr="//td[@name='td_name']" position="before">
+            	<td name="td_ref"><span t-field="line.product_id.default_code">123456</span></td>
+				<td name="td_stock" class="text-center">
+                	<t t-if="line.product_id and line.product_id.type == 'product'">
+                    	<t t-if="line.product_uom_qty &lt;= line.product_id.virtual_available">
+                			<span>Oui</span>
+                    	</t>
+                    	<t t-else="">
+                			<span>Non</span>
+                		</t>
+                    </t>
+                	<t t-else="">
+                        <span>-</span>
+                    </t>
+                </td>
+            </xpath>
+	</template>
+</odoo>

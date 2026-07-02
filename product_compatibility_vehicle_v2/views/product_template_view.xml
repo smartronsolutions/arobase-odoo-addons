@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================================== -->
+    <!-- EXTENSION DES VUES PRODUIT              -->
+    <!-- ======================================== -->
+
+    <!-- Extension du formulaire produit -->
+    <record id="product_template_form_view_compatibility" model="ir.ui.view">
+        <field name="name">product.template.form.compatibility</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            
+            <!-- Ajouter le bouton dans la button_box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_compatibility_categories" 
+                        type="object" 
+                        class="oe_stat_button" 
+                        icon="fa-tags"
+                        invisible="compatibility_category_count == 0">
+                    <field name="compatibility_category_count" widget="statinfo" string="Compatibility"/>
+                </button>
+            </xpath>
+
+            <!-- Ajouter l'onglet Compatibilités -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Compatibility" name="compatibility">
+                    <separator string="Compatibility category"/>
+                    <field name="compatibility_category_ids" nolabel="1">
+                        <tree>
+                            <field name="name" readonly="1"/>
+                            <field name="brand_id" readonly="1"/>
+                            <field name="model_id" readonly="1"/>
+                            <field name="year_id" readonly="1"/>
+                            <field name="series_id" readonly="1"/>
+                            <field name="variant_id" readonly="1"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="name" readonly="1"/>
+                                    <field name="brand_id" readonly="1"/>
+                                    <field name="model_id" readonly="1"/>
+                                    <field name="year_id" readonly="1"/>
+                                    <field name="series_id" readonly="1"/>
+                                    <field name="variant_id" readonly="1"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+
+
+        </field>
+    </record>
+
+    <!-- Extension de la vue liste produit -->
+    <record id="product_template_tree_view_compatibility" model="ir.ui.view">
+        <field name="name">product.template.tree.compatibility</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="compatibility_category_count" string="Compatibility" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extension de la vue de recherche produit -->
+    <record id="product_template_search_view_compatibility" model="ir.ui.view">
+        <field name="name">product.template.search.compatibility</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            
+            <!-- Ajouter champ de recherche -->
+            <xpath expr="//field[@name='name']" position="after">
+                <!--<field name="compatibility_category_ids" string="Compatibilité"
+                       filter_domain="[('compatibility_category_ids.complete_name', 'ilike', self)]"/>-->
+            	<field name="compatibility_search_text" string="Compatibility"/>
+
+            </xpath>
+
+            <!-- Ajouter filtres -->
+            <xpath expr="//filter[@name='categ_id']" position="after">
+                <separator/>
+                <filter string="With compatibility" name="with_compatibility" 
+                        domain="[('compatibility_category_ids', '!=', False)]"/>
+                <filter string="Without compatibility" name="without_compatibility" 
+                        domain="[('compatibility_category_ids', '=', False)]"/>
+            </xpath>
+
+            <!-- Ajouter groupement -->
+            <xpath expr="//group/filter[@name='categ_id']" position="after">
+                <filter string="Compatibility category" name="compatibility_category" 
+                        context="{'group_by': 'compatibility_category_ids'}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Action spéciale pour produits par compatibilité -->
+    <!--<record id="action_product_by_compatibility" model="ir.actions.act_window">
+        <field name="name">Produits par compatibilité</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('compatibility_category_count', '>', 0)]</field>
+        <field name="context">{
+            'search_default_with_compatibility': 1,
+        	'search_default_compatibility_category': 1
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Aucun produit avec compatibilités !
+            </p>
+            <p>
+                Ajoutez des catégories de compatibilité à vos produits pour 
+                faciliter leur recherche et filtrage.
+            </p>
+        </field>
+    </record>-->
+
+
+</odoo>

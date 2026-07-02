@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extension de la vue de configuration des ventes -->
+    <record id="res_config_settings_view_form_advance_payment" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.advance.payment</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Ajouter après la section des devis -->
+            <xpath expr="//block[@name='quotation_order_setting_container']" position="inside">
+                <block title="Paiement anticipé" name="advance_payment">
+                    <!-- Section Paiements Anticipés -->
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="show_residual_amount"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="show_residual_amount"/>
+                            <div class="text-muted">
+                                Affiche en interne le montant résiduel dans les formulaires et listes des commandes de vente
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="show_advance_payments_in_reports"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="show_advance_payments_in_reports"/>
+                            <div class="text-muted">
+                                Affiche la liste des paiements anticipés dans les rapports de devis
+                            </div>
+                        </div>
+                    </div>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

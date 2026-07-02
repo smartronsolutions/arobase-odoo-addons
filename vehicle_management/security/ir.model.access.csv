@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_brand_user,vehicle.brand user,model_vehicle_brand,base.group_user,1,1,1,1
+access_vehicle_model_user,vehicle.model user,model_vehicle_model,base.group_user,1,1,1,1
+access_vehicle_vehicle_user,vehicle.vehicle user,model_vehicle_vehicle,base.group_user,1,1,1,1
+access_vehicle_mileage_user,vehicle.mileage user,model_vehicle_mileage,base.group_user,1,1,1,1

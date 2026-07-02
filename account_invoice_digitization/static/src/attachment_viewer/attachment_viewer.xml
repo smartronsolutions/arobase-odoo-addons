@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.AttachmentList" t-inherit-mode="extension">
+
+        <xpath expr="//div[hasclass('o-mail-AttachmentCard-aside')]//button[@title='Download']" position="before">
+            <button t-if="attachment.enable_digitizer and attachment.isPdf and !attachment.uploading" class="btn d-flex justify-content-center align-items-center w-100 h-100 rounded-0"  t-on-click.stop="() => this.onClickReload(attachment)" title="Reload Data with AI">
+                <i class="fa fa-refresh" role="img" aria-label="Reload Data with AI"/>
+            </button>
+
+        </xpath>
+
+        <xpath expr="//div[@title='Download']" position="before">
+            <div t-if="attachment.enable_digitizer and attachment.isImage" class="btn btn-sm btn-dark rounded opacity-75 opacity-100-hover" t-on-click.stop="() => this.onClickReload(attachment)" title="Reload Data with AI">
+                <i class="fa fa-refresh"/>
+            </div>
+        </xpath>
+
+    </t>
+
+
+</templates>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================================== -->
+    <!-- EXTENSION: SEARCH CATALOG WITH COMPATIBILITY -->
+    <!-- ======================================== -->
+
+    <!-- Extend product search view to add compatibility filters -->
+    <record id="product_catalog_search_view_compatibility" model="ir.ui.view">
+        <field name="name">product.product.search.catalog.compatibility</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_view_search_catalog"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add compatibility search field -->
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="compatibility_search_text"
+                       string="Compatibility"
+                       filter_domain="[('compatibility_search_text', 'ilike', self)]"/>
+            </xpath>
+
+            <!-- Add filters -->
+            <xpath expr="//filter[@name='products']" position="after">
+                <separator/>
+                <filter string="With Compatibility" name="with_compatibility"
+                        domain="[('compatibility_category_ids', '!=', False)]"/>
+                <filter string="Without Compatibility" name="without_compatibility"
+                        domain="[('compatibility_category_ids', '=', False)]"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Extend searchpanel to add compatibility breakdown -->
+    <record id="product_product_search_view_add_compatibility_panel" model="ir.ui.view">
+        <field name="name">product.product.search.add.compatibility.panel</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_view_search_catalog"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add compatibility breakdown AFTER Product Category -->
+            <xpath expr="//searchpanel/field[@name='categ_id']" position="after">
+                <!--<field name="brand_id" string="Brand"/>
+                <field name="model_id" string="Model"/>
+                <field name="year_id" string="Year"/>
+                <field name="series_id" string="Series"/>
+                <field name="variant_id" string="Variant"/>-->
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
